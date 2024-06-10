@@ -4,7 +4,6 @@ Your job is to complete the definition of the function so that it achieves its i
 Do not run this file directly.
 Rather, call whichever functions defined in this file that you want to run from within the file named main.py and run that file directly.
 """
-
 def weather_helper():
   """
   Make suggestions based on current weather conditions.
@@ -30,4 +29,34 @@ def weather_helper():
     2. Do not print anything more than what is requested in the instructions.
     4. The capitalization of the user's responses must not matter to the outcome of the program.
   """
+  temperature = int(input("Enter the current temperature in degrees Fahrenheit: "))
+    
+  if temperature < -70 or temperature > 134:
+    print("Invalid temperature!")
+    return
+    
+  if temperature < 40: 
+    snow = input("It is snowing? ").strip().lower()
+    if snow in ["yes", "yeah", "yup"]:
+      wearing_jacket = input("Are you wearing a warm jacket?: ").strip().lower()
+      if wearing_jacket in ["yes", "yeah", "yup"]:
+        print("Glad to hear you're dressed appropriately!")
+      else:
+        print("What were you thinking when you left home today?!")
+  
+    else:
+      rain = input("Is it raining?: ").strip().lower()
+      if rain in ["yes", "yeah", "yup"]:
+        umbrella = input("Do you have a umbrealla?: ").strip().lower()
+    
+        if umbrella in ["yes", "yeah", "yup"]:
+          print("Good job staying dry!")
+        else:
+          print("You must enjoy getting wet!")
 
+  elif temperature > 90:
+    air_conditioner = input("Do you have a AC?: ").strip().lower()
+    if air_conditioner in ["yes", "yeah", "yup"]:
+      print("Stay cool indoors.")
+    else:
+      print("I hope you have a fan.")

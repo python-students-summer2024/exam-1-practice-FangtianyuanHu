@@ -12,7 +12,8 @@ import random
 # This function accepts two arguments: a minimum value and a maximum value.
 # The function must return a random integer between these two values, inclusive.
 # Use the function random.randint() to generate the pseudo-random number.
-
+def get_random_int(min,max):
+    return random.randint(min,max)
 
 ##--------------------- Function #2 ---------------------##
 # Define a function named 'get_guess'.
@@ -23,6 +24,19 @@ import random
 # If the user has guessed the random integer correctly, this function returns a boolean True.
 # If the user has guessed incorrectly, this function returns a boolean False.
 
+def get_guess(max):
+    random_integer = get_random_int(1, max)
+    try:
+        guess = int(input(f"Try to guess a number between 1 and {max}: "))
+        if 1 <= guess <= max:
+            return guess == random_integer
+        else:
+            return -1
+    except ValueError:
+        return -1
+    
+
+    
 
 ##--------------------- Function #3 ---------------------##
 # Define a function named 'play_game'.
@@ -31,4 +45,25 @@ import random
 # Each time the user guesses, they are immediately informed whether they guessed correctly or not, with the printed output, "Correct!" or "Wrong!"
 # If at any time, the user enters an invalid response, the program immediately prints out the text, "Invalid response!" and does not print out anything further.
 # At the end, the function, assuming the user has entered all valid guesses, the program prints out the percent of guesses that user guessed correctly, following the format: "You guessed 75% of the random numbers correctly."
+def play_game():
+    i = 0
+    n = 0
+    while i < 4:
+        a = get_guess(5)
+        
+        if a is True:
+            print ("Correct!")
+            n += 1
+        elif a is False:
+            print("Wrong!")
+        elif a == -1:
+            print("Invalid response!")
+            return
+        i += 1
+    result = n / 4 * 100
 
+    print(f"You guessed {result:.1f}% of the random numbers correctly.")
+            
+    
+
+        
