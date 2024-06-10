@@ -26,14 +26,22 @@ def get_random_int(min,max):
 
 def get_guess(max):
     random_integer = get_random_int(1, max)
-    try:
-        guess = int(input(f"Try to guess a number between 1 and {max}: "))
-        if 1 <= guess <= max:
-            return guess == random_integer
-        else:
-            return -1
-    except ValueError:
+
+    guess = int(input(f"Try to guess a number between 1 and {max}: "))
+    if not guess.isdigit():
         return -1
+    guess = int(guess)
+    if 1 <= guess <= max:
+        if guess == random_integer:
+            return True
+        else:
+            return False
+    else: 
+        return -1
+
+    
+    
+    
     
 
     
